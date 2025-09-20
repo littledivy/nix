@@ -4,6 +4,10 @@
 sudo nixos-rebuild switch --flake ~/nix-config#msiLaptop
 ```
 
+```sh
+sudo darwin-rebuild switch --flake .#macbook
+```
+
 ## Building the Live installer
 
 Build the ISO:
@@ -22,7 +26,8 @@ $ sudo dd bs=4M conv=fsync oflag=direct status=progress \
 
 ## Install
 
-Build your own (see above) or grab a live ISO from releases. Use wpa_cli to connect to WiFI. 
+Build your own (see above) or grab a live ISO from releases. Use wpa_cli to
+connect to WiFI.
 
 Partition:
 
@@ -35,8 +40,8 @@ $ parted /dev/nvme0n1
 (parted) set 3 esp on
 ```
 
-
 Format:
+
 ```
 $ mkfs.ext4 -L nixos /dev/nvme0n1p1
 
@@ -46,6 +51,7 @@ $ mkfs.fat -F 32 -n boot /dev/nvme0n1p3
 ```
 
 Mount it:
+
 ```
 $ mount /dev/disk/by-label/nixos /mnt
 
@@ -54,6 +60,7 @@ $ mount /dev/disk/by-label/boot /mnt/boot
 ```
 
 Generate or bring your config:
+
 ```
 $ nixos-generate-config --root /mnt
 ```
