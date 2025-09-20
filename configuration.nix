@@ -1,15 +1,19 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "divy-nixos"; 
+  networking.hostName = "divy-nixos";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Asia/Kolkata";
@@ -38,8 +42,8 @@
 
   users.users.divy = {
     isNormalUser = true;
-    extraGroups = [ 
-      "wheel"  # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel" # Enable ‘sudo’ for the user.
       "networkmanager"
     ];
     packages = with pkgs; [
@@ -54,6 +58,7 @@
     kitty
     alacritty
     rofi
+    nixfmt-rfc-style
   ];
 
   services.udev.packages = with pkgs; [
@@ -67,7 +72,6 @@
     enableSSHSupport = true;
   };
   programs.firefox.enable = true;
-
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
@@ -88,4 +92,3 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.05";
 }
-
