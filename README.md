@@ -1,3 +1,5 @@
+# nix
+
 ```sh
 sudo nixos-rebuild switch --flake ~/nix-config#msiLaptop
 ```
@@ -7,7 +9,7 @@ sudo nixos-rebuild switch --flake ~/nix-config#msiLaptop
 Build the ISO:
 
 ```
-$ ./build.sh
+$ ./build-iso.sh
 ```
 
 Flash to a USB drive:
