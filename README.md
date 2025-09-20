@@ -20,7 +20,9 @@ $ sudo dd bs=4M conv=fsync oflag=direct status=progress \
     of=/dev/sda
 ```
 
-Boot it up and use wpa_cli to connect to WiFI. 
+## Install
+
+Build your own (see above) or grab a live ISO from releases. Use wpa_cli to connect to WiFI. 
 
 Partition:
 
