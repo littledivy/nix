@@ -51,16 +51,6 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [
-    vim
-    git
-    wget
-    kitty
-    alacritty
-    rofi
-    nixfmt-rfc-style
-  ];
-
   services.udev.packages = with pkgs; [
     yubikey-personalization
   ];
