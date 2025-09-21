@@ -7,7 +7,6 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
   outputs =
@@ -16,7 +15,6 @@
       nixpkgs,
       nix-darwin,
       home-manager,
-      mac-app-util,
     }:
     let
       lib = nixpkgs.lib;
@@ -55,7 +53,13 @@
             home-manager.darwinModules.home-manager
             {
               home-manager.sharedModules = [
-                mac-app-util.homeManagerModules.default
+                (
+                  { config, pkgs, ... }:
+                  {
+
+                    targets.darwin.linkApps.enable = false;
+                  }
+                )
               ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
