@@ -9,7 +9,7 @@ let
     owner = "littledivy";
     repo = "vimrc";
     rev = "main";
-    sha256 = "sha256-EKM8BTnYm/FSiYd1AMThwg6m/TZEcbeOIFhxEio6IFU=";
+    sha256 = "sha256-XJ0pJpjqeKYAFQrAE8xdflFkf9Iw5SN8xLQouMAe4WI=";
   };
 in
 {
