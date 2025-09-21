@@ -5,10 +5,6 @@
     git
     curl
     wget
-
-    # home-manager on darwin does't add it to /Applications
-    kitty
-    alacritty
   ];
 
   programs.zsh.enable = true;
