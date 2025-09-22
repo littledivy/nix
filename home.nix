@@ -53,6 +53,7 @@ in
         google-chrome
         ripgrep
         lazygit
+        yubikey-manager # ykman otp swap (prevent accidental triggers)
       ]
       ++ lib.optionals stdenv.isLinux [
         rofi
