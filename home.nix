@@ -24,9 +24,9 @@ let
       null;
 
   logi-options-plus = import ./pkgs/logi-options-plus.nix { inherit pkgs lib; };
-  buildon = import ./pkgs/buildon.nix { inherit pkgs lib; };
 in
 {
+  imports = [ ./pkgs/buildon.nix ];
   programs.home-manager.enable = true;
 
   home.stateVersion = "25.05";
@@ -53,7 +53,6 @@ in
         google-chrome
         ripgrep
         lazygit
-        buildon
       ]
       ++ lib.optionals stdenv.isLinux [
         rofi
@@ -70,6 +69,15 @@ in
     ++ lib.optionals pkgs.stdenv.isDarwin [
       logi-options-plus
     ];
+
+  programs.buildon = {
+    enable = true;
+    remotes.mac-mini = {
+      host = "divys-Mac-mini.local";
+      user = "divy";
+      path = "deno/";
+    };
+  };
 
   programs.zsh = {
     enable = true;
