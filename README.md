@@ -1,12 +1,10 @@
 # nix
 
-```sh
-sudo nixos-rebuild switch --flake ~/nix-config#msiLaptop
-```
+This repo contains confugrations for:
 
-```sh
-sudo darwin-rebuild switch --flake .#macbook
-```
+- (nix-darwin) M1 Macbook Pro
+- (nixos 25.11) MSI Modern MS-15HK
+- (nixos 25.11) NixOS Live installer
 
 ## Building the Live installer
 
