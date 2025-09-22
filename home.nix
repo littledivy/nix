@@ -8,8 +8,8 @@ let
   vimrc = pkgs.fetchFromGitHub {
     owner = "littledivy";
     repo = "vimrc";
-    rev = "a946bfd";
-    sha256 = "sha256-XJ0pJpjqeKYAFQrAE8xdflFkf9Iw5SN8xLQouMAe4WI=";
+    rev = "5bc8a5d";
+    sha256 = "sha256-OIMKlO1mtY0Y5x0RudsXYr2CLJSaBOoi/lTbtnyO4sk=";
   };
 
   apple-music-rpc =
