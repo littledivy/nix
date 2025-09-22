@@ -26,6 +26,7 @@ in
       InitialKeyRepeat = 10;
       KeyRepeat = 1;
       "com.apple.swipescrolldirection" = false;
+      AppleInterfaceStyle = "Dark";
     };
   };
 
