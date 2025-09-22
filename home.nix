@@ -24,6 +24,7 @@ let
       null;
 
   logi-options-plus = import ./pkgs/logi-options-plus.nix { inherit pkgs lib; };
+  buildon = import ./pkgs/buildon.nix { inherit pkgs lib; };
 in
 {
   programs.home-manager.enable = true;
@@ -39,6 +40,10 @@ in
         slack
         discord
         rustup
+        go
+        llvmPackages_20.clang
+        lld_20
+        llvmPackages_20.libcxx
         nixfmt-rfc-style
         typst
         typstyle
@@ -48,6 +53,7 @@ in
         google-chrome
         ripgrep
         lazygit
+        buildon
       ]
       ++ lib.optionals stdenv.isLinux [
         rofi
