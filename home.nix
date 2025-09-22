@@ -59,7 +59,6 @@ in
         raycast
         shortcat
         whatsapp-for-mac # update to 25.27.11
-        # hammerspoon
       ]
     )
     ++ lib.optionals pkgs.stdenv.isDarwin [

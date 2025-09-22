@@ -28,7 +28,7 @@
           ];
         };
 
-        msiLaptop = lib.nixosSystem {
+        msi-laptop = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./common.nix
@@ -45,7 +45,7 @@
       };
 
       darwinConfigurations = {
-        macbook = nix-darwin.lib.darwinSystem {
+        m1-macbook = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
             ./common.nix
@@ -68,6 +68,33 @@
             }
           ];
         };
+
+        m1-mac-mini = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = [
+            ./common.nix
+            ./darwin-configuration.nix
+            {
+              networking.wakeOnLan.enable = true;
+            }
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.sharedModules = [
+                (
+                  { config, pkgs, ... }:
+                  {
+
+                    targets.darwin.linkApps.enable = false;
+                  }
+                )
+              ];
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.divy = ./home.nix;
+            }
+          ];
+        };
+
       };
     };
 }
