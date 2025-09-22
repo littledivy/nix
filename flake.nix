@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -14,6 +15,7 @@
       self,
       nixpkgs,
       nix-darwin,
+      nixos-wsl,
       home-manager,
     }:
     let
@@ -39,6 +41,17 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.divy = ./home.nix;
+            }
+          ];
+        };
+
+        wsl = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./common.nix
+            nixos-wsl.nixosModules.default
+            {
+              wsl.enable = true;
             }
           ];
         };
