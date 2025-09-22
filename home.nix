@@ -8,7 +8,7 @@ let
   vimrc = pkgs.fetchFromGitHub {
     owner = "littledivy";
     repo = "vimrc";
-    rev = "main";
+    rev = "a946bfd";
     sha256 = "sha256-XJ0pJpjqeKYAFQrAE8xdflFkf9Iw5SN8xLQouMAe4WI=";
   };
 
