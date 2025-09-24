@@ -54,7 +54,7 @@ in
         google-chrome
         ripgrep
         lazygit
-        lan-mouse
+        input-leap
         yubikey-manager # ykman otp swap (prevent accidental triggers)
       ]
       ++ lib.optionals stdenv.isLinux [
