@@ -23,6 +23,7 @@ let
     else
       null;
 
+  toml = pkgs.formats.toml { };
   logi-options-plus = import ./pkgs/logi-options-plus.nix { inherit pkgs lib; };
 in
 {
@@ -138,6 +139,12 @@ in
 
   home.file.".vimrc".source = "${vimrc}/.vimrc";
   home.file.".vimrc".force = true;
+
+  home.file.".config/prr/config.toml".source = toml.generate "config.toml" {
+    prr = {
+      workdir = "${config.home.homeDirectory}/prr";
+    };
+  };
 
   home.activation.vimrcLocalOverride = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     local_path="$HOME/vimrc/.vimrc"
