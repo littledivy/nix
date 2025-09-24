@@ -22,6 +22,15 @@ let
       }
     else
       null;
+  prr = pkgs.prr.overrideAttrs {
+    src = pkgs.fetchFromGitHub {
+      owner = "danobi";
+      repo = "prr";
+      rev = "e5076af";
+      sha256 = "sha256-jCW/oKrPDTc8Mn7FV7xUMM8m+3bRSBv4iyU4HiOr0Qg=";
+    };
+    cargoHash = lib.fakeSha256;
+  };
 
   toml = pkgs.formats.toml { };
   logi-options-plus = import ./pkgs/logi-options-plus.nix { inherit pkgs lib; };
@@ -47,7 +56,6 @@ in
         nixfmt-rfc-style
         typst
         typstyle
-        prr
         deno
         gh
         nodejs_24
@@ -71,6 +79,9 @@ in
     )
     ++ lib.optionals pkgs.stdenv.isDarwin [
       logi-options-plus
+    ]
+    ++ [
+      prr
     ];
 
   programs.buildon = {
@@ -143,6 +154,7 @@ in
   home.file.".config/prr/config.toml".source = toml.generate "config.toml" {
     prr = {
       workdir = "${config.home.homeDirectory}/prr";
+      token = "";
     };
   };
 
