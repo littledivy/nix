@@ -49,10 +49,12 @@ in
         typstyle
         prr
         deno
+        gh
         nodejs_24
         google-chrome
         ripgrep
         lazygit
+        lan-mouse
         yubikey-manager # ykman otp swap (prevent accidental triggers)
       ]
       ++ lib.optionals stdenv.isLinux [
