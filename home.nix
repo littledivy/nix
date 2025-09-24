@@ -36,7 +36,6 @@ in
       with pkgs;
       [
         kitty
-        alacritty
         slack
         discord
         rustup
@@ -54,10 +53,10 @@ in
         google-chrome
         ripgrep
         lazygit
-        input-leap
         yubikey-manager # ykman otp swap (prevent accidental triggers)
       ]
       ++ lib.optionals stdenv.isLinux [
+        deskflow # todo: add a macOS pkg
         rofi
       ]
       ++ lib.optionals stdenv.isDarwin [
