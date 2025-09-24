@@ -47,6 +47,7 @@ in
 
   users.users.divy = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     extraGroups = [
       "wheel" # Enable ‘sudo’ for the user.
       "networkmanager"
