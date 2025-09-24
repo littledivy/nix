@@ -4,7 +4,14 @@
   pkgs,
   ...
 }:
-
+let
+  dwmSrc = pkgs.fetchFromGitHub {
+    owner = "littledivy";
+    repo = "dwm";
+    rev = "8cc96dc";
+    sha256 = "sha256-ZqJavQpl1m/bDf2PyOhvjPbasNmxk6MfkBK3v5V7Gjo=";
+  };
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -23,12 +30,7 @@
   services.xserver.enable = true;
   services.xserver.windowManager.dwm.enable = true;
   services.xserver.windowManager.dwm.package = pkgs.dwm.overrideAttrs {
-    src = pkgs.fetchFromGitHub {
-      owner = "littledivy";
-      repo = "dwm";
-      rev = "307ef1a";
-      sha256 = "sha256-6MRibt3pS7Zl79iLdDkJ3cRn7FrNdmVopfW+KeLMBQw=";
-    };
+    src = dwmSrc;
   };
 
   services.printing.enable = true;
@@ -55,7 +57,13 @@
     yubikey-personalization
   ];
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      UseDns = true;
+      X11Forwarding = true;
+    };
+  };
 
   programs.gnupg.agent = {
     enable = true;
