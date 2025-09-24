@@ -8,8 +8,8 @@ let
   dwmSrc = pkgs.fetchFromGitHub {
     owner = "littledivy";
     repo = "dwm";
-    rev = "8cc96dc";
-    sha256 = "sha256-ZqJavQpl1m/bDf2PyOhvjPbasNmxk6MfkBK3v5V7Gjo=";
+    rev = "39619e3";
+    sha256 = "sha256-XapNjLM6f8UaJp1ti7bqM48hCQeubkEpeThETSnHGAk=";
   };
 in
 {
@@ -54,6 +54,8 @@ in
     ];
     packages = with pkgs; [
       tree
+      libnotify
+      brightnessctl
     ];
   };
 
