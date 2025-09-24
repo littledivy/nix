@@ -15,6 +15,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
+    ./pkgs/deskflow-client.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -32,6 +33,8 @@ in
   services.xserver.windowManager.dwm.package = pkgs.dwm.overrideAttrs {
     src = dwmSrc;
   };
+  services.displayManager.autoLogin.user = "divy";
+  services.displayManager.autoLogin.enable = true;
 
   services.printing.enable = true;
 
@@ -57,12 +60,25 @@ in
     yubikey-personalization
   ];
 
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
+
   services.openssh = {
     enable = true;
     settings = {
       UseDns = true;
       X11Forwarding = true;
     };
+  };
+
+  # Delete /etc/systemd/user/deskflow-client.service to take effect before nixos-rebuild switch
+  services.deskflow-client = {
+    enable = true;
+    serverAddress = "divys-MacBook-Pro.local";
+    # serverAddress = "192.168.1.26";
+    clientName = "divy-nixos";
   };
 
   programs.gnupg.agent = {
