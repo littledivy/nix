@@ -19,6 +19,12 @@ in
     }
   );
 
+  nix.gc.interval = {
+    Weekday = 0;
+    Hour = 0;
+    Minute = 0;
+  };
+
   system.defaults = {
     controlcenter.BatteryShowPercentage = true;
     dock.autohide = true;

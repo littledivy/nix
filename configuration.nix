@@ -38,6 +38,7 @@ in
 
   services.printing.enable = true;
 
+  nix.gc.dates = "weekly";
   services.pipewire = {
     enable = true;
     pulse.enable = true;
