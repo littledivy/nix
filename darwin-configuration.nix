@@ -23,7 +23,7 @@ in
     controlcenter.BatteryShowPercentage = true;
     dock.autohide = true;
     NSGlobalDomain = {
-      InitialKeyRepeat = 60;
+      InitialKeyRepeat = 20;
       KeyRepeat = 1;
       "com.apple.swipescrolldirection" = false;
       AppleInterfaceStyle = "Dark";
