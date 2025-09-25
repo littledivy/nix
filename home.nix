@@ -54,8 +54,6 @@ in
         lld_20
         llvmPackages_20.libcxx
         nixfmt-rfc-style
-        typst
-        typstyle
         deno
         gh
         nodejs_24
@@ -71,7 +69,6 @@ in
       ++ lib.optionals stdenv.isDarwin [
         # can't really escape unfree on macOS
 
-        skimpdf
         raycast
         shortcat
         whatsapp-for-mac # update to 25.27.11
