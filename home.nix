@@ -46,7 +46,6 @@ in
       with pkgs;
       [
         kitty
-        slack
         discord
         rustup
         go
@@ -58,6 +57,7 @@ in
         gh
         nodejs_24
         google-chrome
+        qutebrowser
         ripgrep
         lazygit
         yubikey-manager # ykman otp swap (prevent accidental triggers)
@@ -108,7 +108,7 @@ in
     };
   };
 
-  programs.firefox.enable = true;
+  programs.firefox.enable = false;
 
   programs.kitty = {
     enable = true;
