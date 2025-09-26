@@ -81,6 +81,27 @@ in
       prr
     ];
 
+  programs.qutebrowser = {
+    enable = true;
+    settings = {
+      editor = {
+        command = [
+          "kitty"
+          "-o"
+          "allow_remote_control=yes"
+          "vim"
+          "-f"
+          "{file}"
+          "-c"
+          "normal {line}G{column0}l"
+        ];
+      };
+
+    };
+
+    loadAutoconfig = false;
+  };
+
   programs.buildon = {
     enable = true;
     remotes.mac-mini = {
