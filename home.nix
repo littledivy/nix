@@ -57,7 +57,6 @@ in
         gh
         nodejs_24
         google-chrome
-        qutebrowser
         ripgrep
         lazygit
         yubikey-manager # ykman otp swap (prevent accidental triggers)
@@ -80,39 +79,6 @@ in
     ++ [
       prr
     ];
-
-  programs.qutebrowser = {
-    enable = true;
-    extraConfig = ''
-      c.url.searchengines = {
-        "DEFAULT": "https://google.com/search?q={}",
-      }
-    '';
-    settings = {
-      content.blocking = {
-        enabled = true;
-        method = "adblock";
-      };
-      editor = {
-        command = [
-          "/etc/profiles/per-user/divy/bin/kitty"
-          "-o"
-          "allow_remote_control=yes"
-          "vim"
-          "-f"
-          "{file}"
-          "-c"
-          "normal {line}G{column0}l"
-        ];
-      };
-      confirm_quit = [ "multiple-tabs" ];
-      auto_save.session = true;
-      url.default_page = "about:blank";
-      url.start_pages = "about:blank";
-    };
-
-    loadAutoconfig = false;
-  };
 
   programs.buildon = {
     enable = true;
