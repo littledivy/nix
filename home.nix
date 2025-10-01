@@ -34,6 +34,7 @@ let
 
   toml = pkgs.formats.toml { };
   logi-options-plus = import ./pkgs/logi-options-plus.nix { inherit pkgs lib; };
+  hammerspoon = import ./pkgs/hammerspoon.nix { inherit pkgs lib; };
 in
 {
   imports = [ ./pkgs/buildon.nix ];
@@ -68,6 +69,7 @@ in
       ++ lib.optionals stdenv.isDarwin [
         # can't really escape unfree on macOS
 
+        hammerspoon
         raycast
         shortcat
         whatsapp-for-mac # update to 25.27.11
