@@ -27,7 +27,18 @@ in
 
   system.defaults = {
     controlcenter.BatteryShowPercentage = true;
-    dock.autohide = true;
+    WindowManager = {
+      GloballyEnabled = true;
+
+      # doesn't exist in nix-darwin
+      # AnimationSpeed = 1.0;
+      # AutoHideWhenOccluded = true;
+    };
+    dock = {
+      autohide = true;
+      # also affects stage manager animation delay
+      autohide-delay = 0.0;
+    };
     NSGlobalDomain = {
       InitialKeyRepeat = 20;
       KeyRepeat = 1;
