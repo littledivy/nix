@@ -35,13 +35,15 @@ let
   toml = pkgs.formats.toml { };
   logi-options-plus = import ./pkgs/logi-options-plus.nix { inherit pkgs lib; };
   hammerspoon = import ./pkgs/hammerspoon.nix { inherit pkgs lib; };
+
+  plex = import ./pkgs/plex.nix { inherit pkgs lib; };
 in
 {
-  imports = [ ./pkgs/buildon.nix ];
   programs.home-manager.enable = true;
 
   home.stateVersion = "25.05";
 
+  imports = [ ./pkgs/buildon.nix ];
   home.packages =
     (
       with pkgs;
@@ -77,6 +79,7 @@ in
     )
     ++ lib.optionals pkgs.stdenv.isDarwin [
       logi-options-plus
+      plex
     ]
     ++ [
       prr
@@ -99,6 +102,17 @@ in
       k = "kubectl";
     };
   };
+
+  home.sessionPath = [
+    "$HOME/.local/bin"
+    "$HOME/.npm-packages/bin"
+  ];
+
+  home.sessionVariables = {
+    NODE_PATH = "$HOME/.npm-packages/lib/node_modules";
+  };
+
+  home.file.".npmrc".text = "prefix = \${HOME}/.npm-packages";
 
   programs.git = {
     enable = true;

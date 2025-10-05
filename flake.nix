@@ -87,6 +87,7 @@
           modules = [
             ./common.nix
             ./darwin-configuration.nix
+            ./lab2.nix
             {
               networking.wakeOnLan.enable = true;
             }
