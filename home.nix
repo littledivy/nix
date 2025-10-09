@@ -50,6 +50,8 @@ in
         google-chrome
         ripgrep
         lazygit
+        go-font
+        claude-code
         yubikey-manager # ykman otp swap (prevent accidental triggers)
       ]
       ++ lib.optionals stdenv.isLinux [
@@ -119,6 +121,9 @@ in
       # https://github.com/vim/colorschemes/blob/master/colors/habamax.vim
       background = "#1c1c1c";
       foreground = "#bcbcbc";
+      enable_audio_bell = false;
+
+      font_family = "Go Mono";
     };
   };
 
