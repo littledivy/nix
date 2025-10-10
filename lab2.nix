@@ -19,6 +19,46 @@ in
     };
   */
 
+  system.defaults = {
+    dock = {
+      mineffect = "scale";
+      launchanim = true;
+    };
+
+    NSGlobalDomain = {
+      "AppleReduceDesktopTinting" = true;
+
+      "com.apple.universalaccess.reduceMotion" = true;
+      "com.apple.universalaccess.reduceTransparency" = true;
+
+      "com.apple.sound.beep.volume" = 0.0;
+      "com.apple.sound.uiaudio.enabled" = 0;
+    };
+
+    loginwindow = {
+      GuestEnabled = false;
+      PowerButtonSleepsSystem = false;
+      autoLoginUser = "divy";
+    };
+  };
+
+  system.activationScripts.extraActivation.text = ''
+    # Energy settings for server usage
+    echo "Configuring power management settings for Mac mini server..."
+
+    # Prevent automatic sleeping, enable wake for network access, auto restart after power failure
+    /usr/bin/pmset -a sleep 0
+    /usr/bin/pmset -a displaysleep 5
+    /usr/bin/pmset -a womp 1
+    /usr/bin/pmset -a autorestart 1
+
+    # Disable Wi-Fi and Bluetooth for power savings (uncomment if desired)
+    # /usr/sbin/networksetup -setairportpower en0 off
+    # /usr/bin/blueutil -p 0
+
+    echo "Power management settings configured."
+  '';
+
   environment.systemPackages = [
     pkgs.nodejs
     pkgs.cloudflared
