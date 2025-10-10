@@ -25,19 +25,16 @@ in
       launchanim = true;
     };
 
+    universalaccess = {
+      reduceMotion = true;
+      reduceTransparency = true;
+    };
     NSGlobalDomain = {
-      "AppleReduceDesktopTinting" = true;
-
-      "com.apple.universalaccess.reduceMotion" = true;
-      "com.apple.universalaccess.reduceTransparency" = true;
-
       "com.apple.sound.beep.volume" = 0.0;
-      "com.apple.sound.uiaudio.enabled" = 0;
     };
 
     loginwindow = {
       GuestEnabled = false;
-      PowerButtonSleepsSystem = false;
       autoLoginUser = "divy";
     };
   };
