@@ -4,7 +4,8 @@ let
   pname = "hammerspoon";
   version = "0.9.97";
   appName = "Hammerspoon.app";
-in pkgs.stdenv.mkDerivation {
+in
+pkgs.stdenv.mkDerivation {
   inherit pname version;
 
   src = pkgs.fetchzip {
@@ -25,6 +26,9 @@ in pkgs.stdenv.mkDerivation {
     homepage = "https://www.hammerspoon.org";
     description = "A tool for powerful automation of macOS";
     license = lib.licenses.mit;
-    platforms = [ "x86_64-darwin" "aarch64-darwin" ];
+    platforms = [
+      "x86_64-darwin"
+      "aarch64-darwin"
+    ];
   };
 }

@@ -13,7 +13,10 @@ pkgs.stdenv.mkDerivation rec {
     sha256 = "sha256-+8BSZhLCrMFCbGV3AISP2+uNZ5bEUVVIcDGZ3/EKuAE=";
   };
 
-  buildInputs = [ pkgs.undmg pkgs.unzip ];
+  buildInputs = [
+    pkgs.undmg
+    pkgs.unzip
+  ];
 
   dontStrip = true;
   #sourceRoot = ".";

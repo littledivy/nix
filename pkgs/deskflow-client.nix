@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.services.deskflow-client;
-in {
+in
+{
   options.services.deskflow-client = {
     enable = mkEnableOption "Deskflow client service";
 
@@ -30,7 +32,7 @@ in {
 
     extraArgs = mkOption {
       type = types.listOf types.str;
-      default = [];
+      default = [ ];
       description = "Extra arguments to pass to deskflow-client";
     };
   };
@@ -38,8 +40,8 @@ in {
   config = mkIf cfg.enable {
     systemd.user.services.deskflow-client = {
       description = "Deskflow client";
-      wantedBy = ["graphical-session.target"];
-      after = ["graphical-session.target"];
+      wantedBy = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
 
       serviceConfig = {
         ExecStart = ''

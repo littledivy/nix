@@ -19,6 +19,7 @@
           rustup
           pkg-config
           cmake
+          universal-ctags
         ];
       };
     });

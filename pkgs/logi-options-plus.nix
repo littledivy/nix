@@ -22,11 +22,11 @@ pkgs.stdenv.mkDerivation rec {
   '';
 
   installPhase = ''
-    cat > $out/logi-options-plus <<EOF
-#!/usr/bin/env bash
-open "$out/logioptionsplus_installer.app"
-EOF
-    chmod +x $out/logi-options-plus
+        cat > $out/logi-options-plus <<EOF
+    #!/usr/bin/env bash
+    open "$out/logioptionsplus_installer.app"
+    EOF
+        chmod +x $out/logi-options-plus
   '';
 
   meta = with pkgs.lib; {

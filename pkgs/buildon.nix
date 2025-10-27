@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   buildonPkg = pkgs.buildGoModule rec {
@@ -21,8 +26,9 @@ let
     };
   };
 
-  toml = pkgs.formats.toml {};
-in {
+  toml = pkgs.formats.toml { };
+in
+{
   options.programs.buildon = {
     enable = lib.mkEnableOption "buildon remote builder tool";
 
@@ -34,7 +40,7 @@ in {
 
     remotes = lib.mkOption {
       type = lib.types.attrsOf (lib.types.attrsOf lib.types.str);
-      default = {};
+      default = { };
       description = "Remote machine definitions (→ [remote.<name>] tables).";
     };
   };
@@ -42,10 +48,8 @@ in {
   config = lib.mkIf config.programs.buildon.enable {
     home.packages = [ config.programs.buildon.package ];
 
-    home.file.".config/buildon/config.toml".source =
-      toml.generate "config.toml" {
-        remote = config.programs.buildon.remotes;
-      };
+    home.file.".config/buildon/config.toml".source = toml.generate "config.toml" {
+      remote = config.programs.buildon.remotes;
+    };
   };
 }
-
