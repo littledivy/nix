@@ -55,7 +55,6 @@ in
         yubikey-manager # ykman otp swap (prevent accidental triggers)
       ]
       ++ lib.optionals stdenv.isLinux [
-        deskflow # todo: add a macOS pkg
         rofi
       ]
       ++ lib.optionals stdenv.isDarwin [

@@ -15,7 +15,6 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    ./pkgs/deskflow-client.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -75,14 +74,6 @@ in
       UseDns = true;
       X11Forwarding = true;
     };
-  };
-
-  # Delete /etc/systemd/user/deskflow-client.service to take effect before nixos-rebuild switch
-  services.deskflow-client = {
-    enable = true;
-    serverAddress = "divys-MacBook-Pro.local";
-    # serverAddress = "192.168.1.26";
-    clientName = "divy-nixos";
   };
 
   programs.gnupg.agent = {
