@@ -3,6 +3,7 @@
 This repo contains confugrations for:
 
 - (nix-darwin) M1 Macbook Pro
+- (nix-darwin) M4 Max Macbook Pro
 - (nix-darwin) M1 Mac mini
 - (nixos 25.11) MSI Modern MS-15HK
 - (nixos 25.11) NixOS Live installer
