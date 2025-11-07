@@ -6,7 +6,7 @@ pkgs.stdenv.mkDerivation rec {
 
   src = pkgs.fetchurl {
     url = "https://download01.logi.com/web/ftp/pub/techsupport/optionsplus/logioptionsplus_installer.zip";
-    sha256 = "sha256-UgusIht0Hf32CT9vdtSAjHc8wvKsmtNU9G+4NHUn4gU=";
+    sha256 = "sha256-UYSLSZQUk3sqdma4SA1eB1QbdyblIcRGHdkRup2DnNk=";
   };
 
   # skip default unpack
