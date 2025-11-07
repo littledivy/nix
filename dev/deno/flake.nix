@@ -20,6 +20,8 @@
           pkg-config
           cmake
           universal-ctags
+					openssl
+					curl
         ];
       };
     });
