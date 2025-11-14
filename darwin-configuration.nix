@@ -28,7 +28,7 @@ in
   system.defaults = {
     controlcenter.BatteryShowPercentage = true;
     WindowManager = {
-      GloballyEnabled = true;
+      GloballyEnabled = false;
 
       # doesn't exist in nix-darwin
       # AnimationSpeed = 1.0;
@@ -53,6 +53,10 @@ in
       name = "${username}";
     };
   };
+
+ system.activationScripts.extraActivation.text = ''
+    softwareupdate --install-rosetta --agree-to-license
+  '';
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
