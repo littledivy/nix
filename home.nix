@@ -12,16 +12,6 @@ let
     sha256 = "sha256-OIMKlO1mtY0Y5x0RudsXYr2CLJSaBOoi/lTbtnyO4sk=";
   };
 
-  prr = pkgs.prr.overrideAttrs {
-    src = pkgs.fetchFromGitHub {
-      owner = "danobi";
-      repo = "prr";
-      rev = "e5076af";
-      sha256 = "sha256-jCW/oKrPDTc8Mn7FV7xUMM8m+3bRSBv4iyU4HiOr0Qg=";
-    };
-    cargoHash = lib.fakeSha256;
-  };
-
   toml = pkgs.formats.toml { };
   logi-options-plus = import ./pkgs/logi-options-plus.nix { inherit pkgs lib; };
   plex = import ./pkgs/plex.nix { inherit pkgs lib; };
@@ -32,12 +22,13 @@ in
   home.stateVersion = "25.05";
 
   imports = [ ./pkgs/buildon.nix ];
+
   home.packages =
     (
       with pkgs;
       [
-        kitty
-        discord
+				kitty # blocked on https://github.com/NixOS/nixpkgs/issues/461406
+				discord
         rustup
         go
         llvmPackages_20.clang
@@ -62,15 +53,13 @@ in
 
         raycast
         shortcat
-        whatsapp-for-mac # update to 25.27.11
+				# broken: https://github.com/NixOS/nixpkgs/pull/445181
+        # whatsapp-for-mac # update to 25.27.11
       ]
     )
     ++ lib.optionals pkgs.stdenv.isDarwin [
       logi-options-plus
       plex
-    ]
-    ++ [
-      prr
     ];
 
   programs.buildon = {
@@ -104,11 +93,13 @@ in
 
   programs.git = {
     enable = true;
-    userName = "Divy Srivastava";
-    userEmail = "me@littledivy.com";
-    extraConfig = {
+		settings = {
       init.defaultBranch = "main";
-    };
+			user = {
+  			name = "Divy Srivastava";
+				email = "me@littledivy.com";
+			};
+		};
   };
 
   programs.firefox.enable = false;
@@ -128,13 +119,6 @@ in
 
   home.file.".vimrc".source = "${vimrc}/.vimrc";
   home.file.".vimrc".force = true;
-
-  home.file.".config/prr/config.toml".source = toml.generate "config.toml" {
-    prr = {
-      workdir = "${config.home.homeDirectory}/prr";
-      token = "";
-    };
-  };
 
   home.activation.vimrcLocalOverride = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     local_path="$HOME/vimrc/.vimrc"
