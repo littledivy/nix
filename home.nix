@@ -27,8 +27,8 @@ in
     (
       with pkgs;
       [
-				kitty # blocked on https://github.com/NixOS/nixpkgs/issues/461406
-				discord
+        kitty # blocked on https://github.com/NixOS/nixpkgs/issues/461406
+        discord
         rustup
         go
         llvmPackages_20.clang
@@ -50,10 +50,10 @@ in
       ]
       ++ lib.optionals stdenv.isDarwin [
         # can't really escape unfree on macOS
-
+        _1password-gui
         raycast
         shortcat
-				# broken: https://github.com/NixOS/nixpkgs/pull/445181
+        # broken: https://github.com/NixOS/nixpkgs/pull/445181
         # whatsapp-for-mac # update to 25.27.11
       ]
     )
@@ -93,13 +93,13 @@ in
 
   programs.git = {
     enable = true;
-		settings = {
+    settings = {
       init.defaultBranch = "main";
-			user = {
-  			name = "Divy Srivastava";
-				email = "me@littledivy.com";
-			};
-		};
+      user = {
+        name = "Divy Srivastava";
+        email = "me@littledivy.com";
+      };
+    };
   };
 
   programs.firefox.enable = false;
