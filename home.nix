@@ -21,8 +21,9 @@ in
 
   home.stateVersion = "25.05";
 
-  imports = [ ./pkgs/buildon.nix ];
-
+  imports = [
+    ./pkgs/buildon.nix
+  ];
   home.packages =
     (
       with pkgs;

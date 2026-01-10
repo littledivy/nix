@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
 in
 {
@@ -25,10 +30,12 @@ in
       launchanim = true;
     };
 
-    universalaccess = {
-      reduceMotion = true;
-      reduceTransparency = true;
-    };
+    /*
+      universalaccess = {
+        reduceMotion = true;
+        reduceTransparency = true;
+      };
+    */
     NSGlobalDomain = {
       "com.apple.sound.beep.volume" = 0.0;
     };
@@ -37,8 +44,10 @@ in
       GuestEnabled = false;
       autoLoginUser = "divy";
     };
+
   };
 
+  power.sleep.allowSleepByPowerButton = false;
   system.activationScripts.extraActivation.text = ''
     # Energy settings for server usage
     echo "Configuring power management settings for Mac mini server..."
@@ -60,4 +69,5 @@ in
     pkgs.nodejs
     pkgs.cloudflared
   ];
+
 }

@@ -104,7 +104,12 @@
               ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.divy = ./home.nix;
+              home-manager.users.divy = {
+                imports = [
+                  ./home.nix
+                  ./pkgs/immich-darwin.nix
+                ];
+              };
             }
           ];
         };
