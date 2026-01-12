@@ -88,8 +88,12 @@ in
       			host  all       all     all  trust
     '';
   };
+  environment.systemPackages = [
+    pkgs.jdk21
+  ];
 
   system.activationScripts.extraActivation.text = ''
+    ln -sf "${pkgs.jdk21}/Library/Java/JavaVirtualMachines/zulu-21.jdk" "/Library/Java/JavaVirtualMachines/"
     softwareupdate --install-rosetta --agree-to-license
   '';
 
